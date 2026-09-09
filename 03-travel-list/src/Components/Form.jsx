@@ -7,6 +7,7 @@ function Form({ onAddItems }) {
   function handleSubmit(e) {
     e.preventDefault();
 
+    // validation rules
     if (!description) {
       return;
     }

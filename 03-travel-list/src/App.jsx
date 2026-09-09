@@ -37,16 +37,29 @@ function App() {
     setItems((items) => items.filter((item) => item.id !== id));
   }
 
-  function handleToggleItem() {}
+  function handleToggleItem(id) {
+    setItems((items) =>
+      items.map((item) =>
+        item.id == id ? { ...item, packed: !item.packed } : item,
+      ),
+    );
+  }
 
-  function handleClearList() {}
+  function handleClearList() {
+    setItems([]);
+  }
 
   return (
     <div className="app">
       <Logo />
       <Form onAddItems={handleAddItems} />
-      <PackingList items={items} onDeleteItem={handleDeleteItem} />
-      <State />
+      <PackingList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onToggleItem={handleToggleItem}
+        onClearList={handleClearList}
+      />
+      <State items={items} />
     </div>
   );
 }
